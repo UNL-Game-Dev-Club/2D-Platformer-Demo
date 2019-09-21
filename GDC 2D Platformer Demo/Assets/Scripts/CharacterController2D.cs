@@ -10,9 +10,6 @@ public class CharacterController2D : MonoBehaviour
 	float walkAcceleration = 75;
 
 	[SerializeField]
-	float airAcceleration = 30;
-
-	[SerializeField]
 	float groundDeacceleration = 70;
 
 	[SerializeField]
