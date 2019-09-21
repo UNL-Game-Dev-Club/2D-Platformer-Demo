@@ -13,7 +13,7 @@ public class CharacterController2D : MonoBehaviour
 	float airAcceleration = 30;
 
 	[SerializeField]
-	float groundDeceleration = 70;
+	float groundDeacceleration = 70;
 
 	[SerializeField]
 	float jumpHeight = 4;
@@ -48,7 +48,7 @@ public class CharacterController2D : MonoBehaviour
 		if (moveInput != 0)
 			velocity.x = Mathf.MoveTowards(velocity.x, speed * moveInput, walkAcceleration * Time.deltaTime);
 		else
-			velocity.x = Mathf.MoveTowards(velocity.x, 0, groundDeceleration * Time.deltaTime);
+			velocity.x = Mathf.MoveTowards(velocity.x, 0, groundDeacceleration * Time.deltaTime);
 
 		transform.Translate(velocity * Time.deltaTime);
 
@@ -66,9 +66,7 @@ public class CharacterController2D : MonoBehaviour
 			{
 				transform.Translate(colliderDistance.pointA - colliderDistance.pointB);
 				if (Vector2.Angle(colliderDistance.normal, Vector2.up) < 90 && velocity.y < 0)
-				{
 					grounded = true;
-				}
 			}
 		}
 	}
