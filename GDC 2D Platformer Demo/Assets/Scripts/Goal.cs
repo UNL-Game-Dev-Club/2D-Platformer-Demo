@@ -15,9 +15,11 @@ public class Goal : MonoBehaviour {
 	{
         Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, Vector2.Scale(GetComponent<BoxCollider2D>().size, new Vector2(transform.localScale.x, transform.localScale.y)), transform.eulerAngles.z);
 
-		if (hits.Any (hit => hit.gameObject.layer == 8)) 
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (hits.Any(hit => hit.gameObject.layer == 8))
+        {
+            // TODO: Go to next level
+        }
 
-		transform.Rotate(0, 0, 100 * Time.deltaTime);
+		// TODO: Add fancy dancy rotation
 	}
 }

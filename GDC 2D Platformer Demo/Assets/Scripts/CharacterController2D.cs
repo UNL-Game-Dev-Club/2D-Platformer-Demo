@@ -10,9 +10,6 @@ public class CharacterController2D : MonoBehaviour
 	float walkAcceleration = 75;
 
 	[SerializeField]
-	float groundDeacceleration = 70;
-
-	[SerializeField]
 	float jumpHeight = 4;
 
 	private BoxCollider2D boxCollider;
@@ -23,46 +20,35 @@ public class CharacterController2D : MonoBehaviour
 
 	private void Awake()
 	{      
-		boxCollider = GetComponent<BoxCollider2D>();
+        // TODO: Implement BoxCollider2D
 	}
 
 	private void Update()
 	{
 		if (grounded)
 		{
-			velocity.y = 0;
-
-			if (Input.GetButtonDown("Jump")) 
-				velocity.y = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
+		    // TODO: Implement jump code	
 		}
 
-		velocity.y += Physics2D.gravity.y * Time.deltaTime;
+        // TODO: Implement gravity
 
 		float moveInput = Input.GetAxisRaw("Horizontal");
 
-		if (moveInput != 0)
-			velocity.x = Mathf.MoveTowards(velocity.x, speed * moveInput, walkAcceleration * Time.deltaTime);
-		else
-			velocity.x = Mathf.MoveTowards(velocity.x, 0, groundDeacceleration * Time.deltaTime);
+        if (moveInput != 0)
+            velocity.x = 0; // TODO: Implement acceleration
+        else
+            velocity.x = 0; // TODO: Implement negative acceleration
 
-		transform.Translate(velocity * Time.deltaTime);
+        // TODO: Implement translation
 
 		Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0);
 
 		grounded = false;
 		foreach (Collider2D hit in hits)
 		{
-			if (hit == boxCollider) 
-				continue;
+			// TODO: skip collisions on player
 
-			ColliderDistance2D colliderDistance = hit.Distance(boxCollider);
-
-			if (colliderDistance.isOverlapped)
-			{
-				transform.Translate(colliderDistance.pointA - colliderDistance.pointB);
-				if (Vector2.Angle(colliderDistance.normal, Vector2.up) < 90 && velocity.y < 0)
-					grounded = true;
-			}
+			// TODO: implement collisions and grounded detection
 		}
 	}
 }
