@@ -17,5 +17,7 @@ public class Goal : MonoBehaviour {
 
 		if (hits.Any (hit => hit.gameObject.layer == 8)) 
 			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+		transform.Rotate(0, 0, 100 * Time.deltaTime);
 	}
 }
