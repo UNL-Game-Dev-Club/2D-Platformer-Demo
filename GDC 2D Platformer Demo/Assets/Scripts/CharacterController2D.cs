@@ -32,10 +32,8 @@ public class CharacterController2D : MonoBehaviour
 		{
 			velocity.y = 0;
 
-			if (Input.GetButtonDown("Jump"))
-			{
+			if (Input.GetButtonDown("Jump")) 
 				velocity.y = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
-			}
 		}
 
 		velocity.y += Physics2D.gravity.y * Time.deltaTime;
@@ -54,7 +52,7 @@ public class CharacterController2D : MonoBehaviour
 		grounded = false;
 		foreach (Collider2D hit in hits)
 		{
-			if (hit == boxCollider)
+			if (hit == boxCollider) 
 				continue;
 
 			ColliderDistance2D colliderDistance = hit.Distance(boxCollider);
