@@ -14,13 +14,15 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        // TODO: detect vertical collision
-        // TODO: detect horizontal collision
-        
-        // TODO: switch moveRight on detection
+        Collider2D[] verticalHits = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y - 1.5f), 0.01f);
+        float horizontalCheckDistance = moveRight ? .5F : -.5F;
+        Collider2D[] horizontalHits = Physics2D.OverlapCircleAll(new Vector2(transform.position.x + horizontalCheckDistance, transform.position.y), 0.01f);
+        if (verticalHits.Length == 0 || horizontalHits.Length != 0)
+        {
+            moveRight = !moveRight;
+        }
 
-        // TODO: add to velocity based on moveRight
-        
-        // TODO: translate enemy
+        velocity.x = moveRight ? speed : -1 * Mathf.Abs(speed);
+        transform.Translate(velocity * Time.deltaTime);
     }
 }
